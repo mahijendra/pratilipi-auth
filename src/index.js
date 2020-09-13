@@ -121,13 +121,13 @@ server.on('connection', function(socket) {
 
 
 //DB config
-const db = require("../config/keys").MongoURI;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/myap"
 
 // Connect to Mongo
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/myap",
+    MONGO_URI,
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB connected"))
