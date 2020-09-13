@@ -1,0 +1,35 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+
+<div>
+    <h1 class="mt-4 text-6xl">Story</h1>
+  <p class="lead text-2xl mb-3"> <%= story.title %></p>
+  <p class="lead mb-3 opacity-50"> <%= story.description %></p>
+  <p class="lead mb-3 bold text-3xl"> Count <span class="text-red-600"> <%= viewCount %></span></p>
+  <p class="lead mb-3 bold text-3xl"> Realtime view Count <span class="text-red-600" id="realtimeViewCount"></span></p>
+</div>
+
+<script>
+    var storyId = <%= story.id %>            
+ </script>
+
+<script>
+    $(function () {
+
+        var socket = io();//connect to the socket
+
+        socket.on('connect',function()
+        {
+           socket.emit('join', storyId);
+           console.log('Yeah I am connected!!');
+        });
+
+        //Listen from server.js
+        socket.on('socket_count',function(value)
+        {
+            document.querySelector("#realtimeViewCount").innerHTML = value;
+        });
+
+    });
+</script>

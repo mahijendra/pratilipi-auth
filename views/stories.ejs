@@ -1,0 +1,7 @@
+<% stories.forEach(function (story) { %>
+    <a href="/stories/<%=story.id%>">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= story.title %>          
+            </div>
+    </a>
+    <% }); %>
