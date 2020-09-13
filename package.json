@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js "
+    "start": "nodemon src/index.js ",
+    "prod": "MONGO_URI=mongodb+srv://lol:lol123@cluster0.gbtib.mongodb.net/myap?retryWrites=true&w=majority node src/index.js"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",

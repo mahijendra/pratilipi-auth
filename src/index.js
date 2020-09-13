@@ -12,7 +12,6 @@ const STORY_LIST = require("../config/stories");
 
 
 
-
 passport.use("login",new Strategy({
   usernameField : 'email',
   passwordField : 'password',
@@ -117,6 +116,8 @@ server.on('connection', function(socket) {
   });
 
 });
+
+//mongodb+srv://lol:lol123@cluster0.gbtib.mongodb.net/myap?retryWrites=true&w=majority
 
 
 
@@ -260,9 +261,9 @@ app.get('/logout',
   
 
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
-http.listen(PORT, "0.0.0.0", () => {
+http.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}!!`);
 });
 
